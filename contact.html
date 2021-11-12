@@ -1,0 +1,66 @@
+<?php include 'koneksi.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Rifki Personal Website</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+   background-image: url("image/background1.jpg");
+   background-repeat: no-repeat;
+   background-size:cover
+ }
+      </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="CVRifki.pdf">Download CV</a> |
+        <a href="contact.html">Contact</a> |
+        <a href="about.html">About me</a>
+    </nav>
+
+    <hr />
+
+    <div>
+        <h1>Contact Me</h1>
+        <form>
+            <label for="Nama Lengkap">Nama Lengkap</label><br />
+            <input type="Nama Lengkap" name="Nama Lengkap" placeholder="Nama Lengkap"/>
+            <br />
+            <label for="email">Email</label><br />
+            <input type="email" name="email" placeholder="alamat email"/>
+            <br />
+            <label for="No HP">No HP</label><br />
+            <input type="No HP" name="No HP" placeholder="No HP"/>
+            <br />
+            <label for="message">Pesan</label><br />
+            <textarea name="message" placeholder="Tulis pesan anda..." rows="4" cols="80"></textarea>
+            <br />
+            <br />
+            <input type="submit" value="Kirim" />
+        </form>
+    </div>
+    <?php
+    if(isset($_POST['Kirim'])){
+        $insert = mysqli_query($conn, "INSERT INTO pesankontak VALUES(NULL,'".$_POST['nama']."',
+        '".$_POST['email']."','".$_POST['nohp']."','".$_POST['pesan']."',NULL)");
+        if($insert){
+            echo 'Data Berhasil';
+        } else {
+            echo 'Gagal';
+        }
+    }
+   ?>
+    </form>
+    <hr>
+    <footer style="text-align: center;">
+        <p>Copyright &copy; 2021 Muhammad Rifki Rizal Wahid.</p>
+    </footer>
+</body>
+</html>
